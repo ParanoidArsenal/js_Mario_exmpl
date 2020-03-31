@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="pyramide_slide_style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Pyramide Slide</h1>
+    </header>
+    <div class="pyramide-container">
+      <div class = "pyramide-control">
+        <div>
+          <p>Brick symbol:</p>
+        <select class="sel_item" name="brick_symb">
+          <option value="#">#</option>
+          <option value="$">$</option>
+          <option value="@">@</option>
+          <option value="X">X</option>
+        </select>
+        </div>
+        <div>
+          <p>How high?</p>
+        <input type="range" min="0" max="30" name = "levelRange">
+        <label for="levelRange">levels</label>
+        <label name="levelRange_lbl" for="levelRange"></label>
+        </div>
+      </div>
+
+      <div class= "pyramide">
+
+      </div>
+    </div>
+    <script src="pyramide_slide.js"></script>
+  </body>
+</html>
