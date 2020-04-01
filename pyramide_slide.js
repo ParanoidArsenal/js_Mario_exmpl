@@ -6,12 +6,21 @@ let pyramidPlace = document.getElementsByClassName("pyramide")[0];
 let levelRange = document.getElementsByName("levelRange")[0];
 let levelRange_lbl = document.getElementsByName("levelRange_lbl")[0];
 levelRange_lbl.innerText = levelRange.value;
-printPyramid(levelRange.value, pyramidPlace);
+
+let brick_type = document.getElementsByName("brick_type")[0];
+
+printPyramid(levelRange.value, pyramidPlace, brick_type.value);
 
 levelRange.addEventListener("change", (e) => { levelRange_lbl.innerText = e.target.value;
                                                removeAllChilds(pyramidPlace);
-                                               printPyramid(e.target.value, pyramidPlace);
+                                               printPyramid(e.target.value, pyramidPlace, brick_type.value);
                                                 });
+
+
+brick_type.addEventListener("change", (e) => { removeAllChilds(pyramidPlace);
+                                              printPyramid(levelRange.value, pyramidPlace, e.target.value);
+                                            });
+
 
 
 function removeAllChilds(node) {
@@ -20,16 +29,19 @@ function removeAllChilds(node) {
     }
 }
 
-function printPyramid(height, node) {
+function printPyramid(height, node, block_type) {
     let levels = height;
     let cur_block_nmb = 2;
+
     //let pyramidPlace = document.getElementById("pyramid");
     //let pyramidPlace = document.getElementsByClassName("pyramide")[0];
     let pyramidPlace = node;
     let white_block = document.createElement("div");
     white_block.classList.add("white_block");
-    let blueviolet_block = document.createElement("div")
-    blueviolet_block.classList.add("blueviolet_block");
+    // let blueviolet_block = document.createElement("div")
+    // blueviolet_block.classList.add("blueviolet_block");
+    let block = document.createElement("div")
+    block.classList.add(block_type);
 
     if(levels == 0) return;
 
@@ -43,9 +55,12 @@ function printPyramid(height, node) {
         }
 
         for(let i = 0; i < cur_block_nmb; i++){
-            let blueviolet_block = document.createElement("div");
-            blueviolet_block.classList.add("blueviolet_block");
-            line_div.appendChild(blueviolet_block);
+            // let blueviolet_block = document.createElement("div");
+            // blueviolet_block.classList.add("blueviolet_block");
+            // line_div.appendChild(blueviolet_block);
+            let block = document.createElement("div");
+            block.classList.add(block_type);
+            line_div.appendChild(block);
         }
 
         pyramidPlace.appendChild(line_div)
